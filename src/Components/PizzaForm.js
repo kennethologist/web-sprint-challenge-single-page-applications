@@ -56,7 +56,7 @@ function PizzaForm() {
                     <input id="special-text" onChange={formChange} type="text" name="special" value={form.specialNotes}></input>
                 </label>
 
-                <button type="submit" onClick={submitForm}>Submit Order</button>
+                <button type="submit" id="order-button" onClick={submitForm}>Submit Order</button>
             </form>
         </div>
     )
