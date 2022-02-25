@@ -14,13 +14,15 @@ function PizzaForm() {
     });
 
     const formChange = (e) => {
-        console.log(e.target);
+        
+        setFormValues({...form, [e.target.name]: e.target.value});
+        console.log(e.target.name, e.target.value, e.target.checked);
     }
 
     const submitForm = (e) => {
         e.preventDefault();
 
-        console.log(form);
+        
     }
 
     console.log(useParams())
@@ -30,10 +32,10 @@ function PizzaForm() {
 
             <form id="pizza-form">
                 <label>Name
-                    <input onChange={formChange} id="name-input" type="text" name="name-input" value={form.name}></input>
+                    <input onChange={formChange} id="name-input" type="text" name="name" value={form.name}></input>
                 </label>
                 <label>Size
-                    <select id="size-dropdown" value={form.size} onChange={formChange}>
+                    <select id="size-dropdown" name="size" value={form.size} onChange={formChange}>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
@@ -51,7 +53,7 @@ function PizzaForm() {
                     </ul>
                 </label>
                 <label>Special Notes
-                    <input id="name-input" onChange={formChange} type="text" name="name-input" value={form.specialNotes}></input>
+                    <input id="special-text" onChange={formChange} type="text" name="special" value={form.specialNotes}></input>
                 </label>
 
                 <button type="submit" onClick={submitForm}>Submit Order</button>
