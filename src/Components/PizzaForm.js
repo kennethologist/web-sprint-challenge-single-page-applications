@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 function PizzaForm() {
@@ -15,10 +15,14 @@ function PizzaForm() {
 
     const formChange = (e) => {
         
-        setFormValues({...form, [e.target.name]: e.target.value});
-        console.log(e.target.name, e.target.value, e.target.checked);
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+        setFormValues({...form, [e.target.name]: value});
     }
 
+    useEffect(() => {
+        console.log(form);
+    },[form]);
     const submitForm = (e) => {
         e.preventDefault();
 

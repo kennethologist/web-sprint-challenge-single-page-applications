@@ -20,7 +20,7 @@ const App = () => {
             <p>Start ya Pizza Order</p>
           </Route>
 
-          <Route path="/pizza/:id">
+          <Route path="/pizza">
             <PizzaForm></PizzaForm>
           </Route>
         </Switch>
