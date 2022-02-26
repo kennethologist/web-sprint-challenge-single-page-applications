@@ -19,8 +19,13 @@ function PizzaForm(props) {
     const {submitOrder} = props;
 
     const formSchema =  yup.object().shape({
-        name: yup.string().min(2, "Name must be at least 2 letters."),
-        size: yup.string().oneOf(["small", "medium", "large", "xlarge"]),
+        name: yup.string().min(2, "name must be at least 2 characters."),
+        size: yup.string().oneOf(["small", "medium", "large", "xlarge"],"size pizza must be selected."),
+        topping1: yup.boolean(),
+        topping2: yup.boolean(),
+        topping3: yup.boolean(),
+        topping4: yup.boolean(),
+        special: yup.string(),
     });
 
     const [errors, setErrors] = useState({
@@ -38,7 +43,7 @@ function PizzaForm(props) {
         special: ""
     });
 
-    const [disableSubmit, setDisabled] = useState(true);
+    const [disableSubmit, setDisabled] = useState(false);
 
     const validateForm = e => {
         yup.reach(formSchema, e.target.name).validate(
@@ -60,7 +65,7 @@ function PizzaForm(props) {
 
     useEffect(() => {
         formSchema.isValid(form).then((valid) => {
-            setDisabled(!valid);
+            //setDisabled(!valid);
         });
     },[form]);
 
@@ -110,7 +115,6 @@ function PizzaForm(props) {
                         <li><input onChange={formChange} type="checkbox" value={form.topping2} name="topping2"></input>Mushrooms</li>
                         <li><input onChange={formChange} type="checkbox" value={form.topping3} name="topping3"></input>Green Peppers</li>
                         <li><input onChange={formChange} type="checkbox" value={form.topping4} name="topping4"></input>Onions</li>
-                        <li><input onChange={formChange} type="checkbox" value={form.topping5} name="topping5"></input>Italian Sausage</li>
                     </ul>
                 </label>
                 <label>Special Notes
