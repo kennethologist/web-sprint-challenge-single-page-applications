@@ -19,7 +19,7 @@ function PizzaForm(props) {
     const {submitOrder} = props;
 
     const formSchema =  yup.object().shape({
-        name: yup.string().min(2, "name must be at least 2 characters."),
+        name: yup.string().min(2, "name must be at least 2 characters"),
         size: yup.string().oneOf(["small", "medium", "large", "xlarge"],"size pizza must be selected."),
         topping1: yup.boolean(),
         topping2: yup.boolean(),
