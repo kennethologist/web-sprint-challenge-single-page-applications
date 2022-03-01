@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
-import PizzaForm from "./Components/PizzaForm";
+import PizzaForm from "./components/PizzaForm";
 
 const App = () => {
 
